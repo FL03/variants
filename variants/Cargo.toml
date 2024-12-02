@@ -12,6 +12,10 @@ readme.workspace = true
 repository.workspace = true
 version.workspace = true
 
+[package.metadata.docs.rs]
+all-features = true
+rustc-args = ["--cfg", "docsrs"]
+
 [features]
 default = [
     "std",
@@ -19,22 +23,18 @@ default = [
 
 full = [
     "default",
-    "serde",
+    "derive",
 ]
 
+derive = [
+    "dep:variants-derive",
+]
 # ********* [FF] Dependencies *********
-alloc = [
-    "serde?/alloc",
-]
-
-serde = [
-    "dep:serde"
-]
+alloc = []
 
 # ********* [FF] Environments *********
 std = [
     "alloc",
-    "serde?/std",
 ]
 
 [lib]
@@ -43,22 +43,7 @@ crate-type = ["cdylib", "rlib"]
 doctest = false
 test = true
 
-[build-dependencies]
-
-[dependencies]
-
-[dependencies.serde]
-default-features = false
-features = ["derive"]
+[dependencies.variants-derive]
 optional = true
-version = "1"
-
-[dev-dependencies]
-
-[package.metadata.docs.rs]
-all-features = true
-rustc-args = ["--cfg", "docsrs"]
-
-[target.wasm32-unknown-unknown.dependencies]
-
-[target.wasm32-wasi]
+path = "../derive"
+version = "0.0.0"
