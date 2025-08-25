@@ -21,6 +21,7 @@ extern crate alloc;
 #[cfg(feature = "derive")]
 pub use variants_derive::*;
 #[doc(inline)]
+#[allow(unused_imports)]
 #[cfg(feature = "macros")]
 pub use variants_macros::*;
 
