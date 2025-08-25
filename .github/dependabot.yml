@@ -2,18 +2,14 @@ version: 2
 
 updates:
   - package-ecosystem: cargo
+    schedule:
+      interval: monthly
     directories:
       - /
       - /variants
       - /derive
       - /macros
-    schedule:
-      interval: monthly
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
-  - package-ecosystem: cargo
-    directory: /variants
-    schedule:
-      interval: weekly
