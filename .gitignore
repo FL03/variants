@@ -3,12 +3,13 @@
 **/.artifacts/data/
 **/.docker/data/
 
-
 ## Caches
 
 **/.cache/
 
 # Configuration Files
+
+**/config.*
 **/*.config.*
 
 **/*.env
@@ -34,7 +35,9 @@
 
 ### vscode
 
-**/.vscode/
+**/.vscode/*
+
+!**/.vscode/settings.json
 
 # File Extensions
 
@@ -59,8 +62,6 @@
 **/*.zip
 **/*.zip.*
 
-
-
 ## Rust
 **/debug/
 **/target/
@@ -68,7 +69,7 @@
 **/*.bk
 **/*.bk.*
 
-**/Cargo.lock
+!**/Cargo.lock
 
 ## Node
 **/build/
@@ -105,3 +106,8 @@
 
 **/*.whl
 **/*.whl.*
+
+## Operating Systems
+
+### Windows (WSL2)
+**/*:Zone.Identifier

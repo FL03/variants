@@ -1,49 +1,69 @@
 [package]
-authors.workspace = true
 build = "build.rs"
+name = "variants"
+
+authors.workspace = true
 categories.workspace = true
 description.workspace = true
 edition.workspace = true
 homepage.workspace = true
 keywords.workspace = true
 license.workspace = true
-name = "variants"
 readme.workspace = true
 repository.workspace = true
 version.workspace = true
 
-[package.metadata.docs.rs]
-all-features = true
-rustc-args = ["--cfg", "docsrs"]
-
-[features]
-default = [
-    "std",
-]
-
-full = [
-    "default",
-    "derive",
-]
-
-derive = [
-    "dep:variants-derive",
-]
-# ********* [FF] Dependencies *********
-alloc = []
-
-# ********* [FF] Environments *********
-std = [
-    "alloc",
-]
-
 [lib]
-bench = true
 crate-type = ["cdylib", "rlib"]
+bench = true
 doctest = false
 test = true
 
-[dependencies.variants-derive]
-optional = true
-path = "../derive"
-version = "0.0.0"
+[dependencies]
+variants-derive = { optional = true, workspace = true }
+variants-macros = { optional = true, workspace = true }
+
+[features]
+default = [
+  "derive",
+  "std",
+]
+
+full = [
+  "default"
+]
+
+nightly = [
+  "variants-derive?/nightly",
+  "variants-macros?/nightly",
+]
+
+# ********* [FF] features *********
+derive = ["dep:variants-derive"]
+
+macros = ["dep:variants-macros"]
+
+
+# ********* [FF] Environments *********
+std = [
+  "alloc",
+  "variants-derive?/std",
+  "variants-macros?/std",
+]
+
+# ********* [FF] Dependencies *********
+alloc = [
+  "variants-derive?/alloc",
+  "variants-macros?/alloc",
+]
+
+# ********* Package Metadata *********
+[package.metadata.docs.rs]
+all-features = false
+features = ["default"]
+rustc-args = ["--cfg", "docsrs"]
+version = "v{{version}}"
+
+[package.metadata.release]
+no-dev-version = true
+tag-name = "{{version}}"
