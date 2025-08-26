@@ -8,7 +8,6 @@ fn main() {
     let a = Something::a();
     let b = Something::b(42);
     let c = Something::c(1.0, 2.0);
-
     
     println!("Variants:\n\t{a:?}\n\t{b:?}\n\t{c:?}");
 }
