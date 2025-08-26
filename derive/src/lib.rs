@@ -3,7 +3,7 @@
     Contrib: FL03 <jo3mccain@icloud.com>
 */
 //! The derive macros for the `variants` crate.
-//! 
+//!
 //! - [`VariantConstructors`]: generate functional constructors for all variants of an enum
 #![allow(
     clippy::missing_safety_doc,
@@ -34,6 +34,18 @@ use proc_macro::TokenStream;
 use syn::{Data, DeriveInput};
 
 /// This macro automatically generates functional constructors for all enclosed variants.
+///
+/// ## Examples
+///
+/// ```rust
+/// use variants_derive::VariantConstructors;
+///
+/// pub enum MyEnum {
+///     Unit,
+///     Tuple(u32, String),
+///     Struct { id: u32, name: String },
+/// }
+/// ```
 #[proc_macro_derive(VariantConstructors, attributes(variants))]
 pub fn variant_constructors(input: TokenStream) -> TokenStream {
     let ast: DeriveInput = syn::parse(input).unwrap();

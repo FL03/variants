@@ -19,4 +19,3 @@ extern crate alloc;
 compile_error! {
     "Either feature `std` or `alloc` must be enabled"
 }
-
