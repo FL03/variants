@@ -27,12 +27,16 @@ version = "0.0.1"
 variants = { path = "variants", version = "0.0.1" }
 variants-derive = { path = "derive", version = "0.0.1" }
 variants-macros = { path = "macros", version = "0.0.1" }
+# benchmarking
+criterion = { features = ["plotters"], version = "0.7" }
 # error handling
 anyhow = { default-features = false, version = "1" }
 thiserror = { default-features = false, version = "2" }
 # serialization
 serde = { default-features = false, features = ["derive"], version = "1" }
 serde_derive = { default-features = false, version = "1" }
+# misc
+lazy_static = { version = "1" }
 
 # ********* Profiles *********
 [profile.dev]

@@ -11,6 +11,7 @@ keywords.workspace = true
 license.workspace = true
 readme.workspace = true
 repository.workspace = true
+rust-version.workspace = true
 version.workspace = true
 
 [lib]
@@ -22,6 +23,10 @@ test = true
 [dependencies]
 variants-derive = { optional = true, workspace = true }
 variants-macros = { optional = true, workspace = true }
+
+[dev-dependencies]
+criterion = { features = ["plotters"], workspace = true }
+lazy_static = { workspace = true }
 
 [features]
 default = [

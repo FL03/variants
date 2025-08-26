@@ -4,7 +4,8 @@
 */
 //! # variants
 //!
-//! Useful macros for constructing enum variants
+//! The [`variants`](self) crate works to provide a set of utilities for working with enums and 
+//! their variants.
 #![crate_name = "variants"]
 #![allow(
     clippy::missing_safety_doc,
