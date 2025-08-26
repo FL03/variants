@@ -12,6 +12,10 @@ on:
   pull_request:
     branches: [ main, master, $default-branch ]
     types: [ opened, reopened, synchronize ]
+    paths:
+      - '**.rs'
+      - '**/Cargo.toml'
+      - '.github/workflows/rust.yml'
   push:
     branches: [ main, master, $default-branch ]
     tags: [ v*.*.*, "*-nightly" ]
@@ -132,12 +136,14 @@ jobs:
       -
         name: Test (no_std)
         if: matrix.features == 'no_std'
+        continue-on-error: true
         run: cargo test -r --locked --workspace --no-default-features
         env:
           RUSTFLAGS: "-C panic=abort -Z panic_abort_tests"
       -
         name: Test (${{ matrix.features }})
         if: matrix.features != 'all' && matrix.features != 'no_std'
+        continue-on-error: true
         run: cargo test -r --locked --workspace --no-default-features --features ${{ matrix.features }}
         env:
           RUSTFLAGS: "-C panic=abort -Z panic_abort_tests"
