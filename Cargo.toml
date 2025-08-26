@@ -1,8 +1,8 @@
 [workspace]
 default-members = ["variants"]
 members = [
-  "derive", 
-  "macros", 
+  "derive",
+  "macros",
   "variants",
 ]
 resolver = "3"
@@ -35,8 +35,6 @@ thiserror = { default-features = false, version = "2" }
 # serialization
 serde = { default-features = false, features = ["derive"], version = "1" }
 serde_derive = { default-features = false, version = "1" }
-# misc
-lazy_static = { version = "1" }
 
 # ********* Profiles *********
 [profile.dev]

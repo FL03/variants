@@ -26,7 +26,6 @@ variants-macros = { optional = true, workspace = true }
 
 [dev-dependencies]
 criterion = { features = ["plotters"], workspace = true }
-lazy_static = { workspace = true }
 
 [features]
 default = [

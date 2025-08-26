@@ -4,7 +4,6 @@
 */
 use core::hint::black_box;
 use criterion::{BatchSize, BenchmarkId, Criterion, criterion_group, criterion_main};
-use lazy_static::lazy_static;
 use std::time::Duration;
 
 const SAMPLES: usize = 50;
@@ -12,11 +11,6 @@ const SAMPLES: usize = 50;
 const N: usize = 20;
 /// the default number of seconds a benchmark should complete in
 const DEFAULT_DURATION_SECS: u64 = 10;
-
-lazy_static! {
-    /// a static reference to the duration of the benchmark
-    static ref DURATION: Duration = Duration::from_secs(DEFAULT_DURATION_SECS);
-}
 
 fn bench_fib_func(c: &mut Criterion) {
     c.bench_function("fibonacci", |b| b.iter(|| fib::fibonacci(black_box(N))));
