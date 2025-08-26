@@ -40,11 +40,16 @@ use syn::{Data, DeriveInput};
 /// ```rust
 /// use variants_derive::VariantConstructors;
 ///
+/// #[derive(Clone, Debug, Default, PartialEq, PartialOrd, VariantConstructors)]
 /// pub enum MyEnum {
 ///     Unit,
 ///     Tuple(u32, String),
 ///     Struct { id: u32, name: String },
 /// }
+/// 
+/// assert_eq!(MyEnum::unit(), MyEnum::Unit);
+/// assert_eq!(MyEnum::tuple(42, "Answer".to_string()), MyEnum::Tuple(42, "Answer".to_string()));
+/// assert_eq!(MyEnum::struct_(1, "Test".to_string()), MyEnum::Struct { id: 1, name: "Test".to_string() });
 /// ```
 #[proc_macro_derive(VariantConstructors, attributes(variants))]
 pub fn variant_constructors(input: TokenStream) -> TokenStream {

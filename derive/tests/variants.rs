@@ -5,7 +5,7 @@
 use variants_derive::VariantConstructors;
 
 #[derive(Clone, Debug, Default, PartialEq, PartialOrd, VariantConstructors)]
-pub enum TestEnum {
+pub enum TestEnum<T = String> {
     #[default]
     A,
     B(usize),
