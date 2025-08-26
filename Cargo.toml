@@ -1,46 +1,52 @@
 [workspace]
-default-members = [
-    "variants"
-]
-
-exclude = [ ]
-
+default-members = ["variants"]
 members = [
-    "variants",
-    "derive"
+  "derive",
+  "macros",
+  "variants",
 ]
-
-resolver = "2"
-
-[workspace.dependencies]
-anyhow = "1"
-lazy_static = "1"
-paste = "1"
-smart_default = "0.7"
-thiserror = "2"
+resolver = "3"
 
 [workspace.package]
-authors = ["FL03 <jo3mccain@icloud.com>",]
-categories = [ ]
-description = "Useful macros for constructing enum variants"
-edition = "2021"
+authors = [
+  "FL03 <joe@pzzld.org> (https://github.com/FL03)"
+]
+categories = []
+description = "Useful interfaces and macros for working with enums in Rust."
+edition = "2024"
 homepage = "https://github.com/FL03/variants/wiki"
-keywords = [ ]
+keywords = ["derive", "enum", "macro", "rust", "variants"]
 license = "Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/FL03/variants.git"
-version = "0.0.0"
+rust-version = "1.85.0"
+version = "0.0.1"
 
+[workspace.dependencies]
+# local
+variants = { path = "variants", version = "0.0.1" }
+variants-derive = { path = "derive", version = "0.0.1" }
+variants-macros = { path = "macros", version = "0.0.1" }
+# benchmarking
+criterion = { features = ["plotters"], version = "0.7" }
+# error handling
+anyhow = { default-features = false, version = "1" }
+thiserror = { default-features = false, version = "2" }
+# serialization
+serde = { default-features = false, features = ["derive"], version = "1" }
+serde_derive = { default-features = false, version = "1" }
+
+# ********* Profiles *********
 [profile.dev]
 codegen-units = 256
 debug = true
 debug-assertions = true
 incremental = true
-lto = false
-panic = 'unwind'
-rpath = false
-opt-level = 0
+lto = "thin"
+opt-level = 2
 overflow-checks = true
+panic = "unwind"
+rpath = false
 
 [profile.release]
 codegen-units = 16
@@ -48,7 +54,7 @@ debug = false
 debug-assertions = false
 incremental = false
 lto = true
-panic = 'unwind'
-rpath = false
-opt-level = "z"
+opt-level = 0
 overflow-checks = false
+panic = "abort"
+rpath = false
