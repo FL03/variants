@@ -1,21 +1,16 @@
 # variants
 
-[![crates.io](https://img.shields.io/crates/v/variants.svg)](https://crates.io/crates/variants)
-[![docs.rs](https://docs.rs/variants/badge.svg)](https://docs.rs/variants)
-[![license](https://img.shields.io/crates/l/variants.svg)](https://crates.io/crates/variants)
-
-[![clippy](https://github.com/FL03/variants/actions/workflows/clippy.yml/badge.svg)](https://github.com/FL03/variants/actions/workflows/clippy.yml)
-[![rust](https://github.com/FL03/variants/actions/workflows/rust.yml/badge.svg)](https://github.com/FL03/variants/actions/workflows/rust.yml)
+[![license](https://img.shields.io/crates/l/variants.svg?style=for-the-badge&logo=github)](./LICENSE)
+[![crates.io](https://img.shields.io/crates/v/variants.svg?style=for-the-badge&logo=rust)](https://crates.io/crates/variants)
+[![docs.rs](https://img.shields.io/docsrs/variants?style=for-the-badge&logo=docs.rs)](https://docs.rs/variants)
 
 ***
 
-_**The library is currently in the early stages of development and is not yet ready for production use.**_
-
-Useful macros for constructing enum variants
+The `variants` crates provides a suite of abstractions, utilities, and prodedural macros to facilitate the creation and management of enums and their variants in Rust.
 
 ## Features
 
-- [x] Feature 1
+- [x] `VariantConstructor` - A derive macro for generating functional constructors for enum variants
 
 ## Getting Started
 

@@ -4,7 +4,7 @@
 */
 //! # variants
 //!
-//! The [`variants`](self) crate works to provide a set of utilities for working with enums and 
+//! The [`variants`](self) crate works to provide a set of utilities for working with enums and
 //! their variants.
 #![crate_name = "variants"]
 #![allow(
@@ -17,6 +17,10 @@
 
 #[cfg(feature = "alloc")]
 extern crate alloc;
+#[doc(inline)]
+pub use self::error::{Error, Result};
+
+pub mod error;
 
 #[doc(inline)]
 #[cfg(feature = "derive")]
