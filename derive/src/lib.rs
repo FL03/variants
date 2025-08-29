@@ -20,6 +20,11 @@ extern crate proc_macro;
 extern crate quote;
 extern crate syn;
 
+#[cfg(not(any(feature = "std", feature = "alloc")))]
+compile_error! {
+    "Either feature `std` or `alloc` must be enabled"
+}
+
 #[allow(dead_code)]
 pub(crate) mod attrs;
 pub(crate) mod impls;
@@ -38,12 +43,12 @@ use syn::{Data, DeriveInput};
 /// #[derive(Clone, Debug, Default, PartialEq, PartialOrd, VariantConstructors)]
 /// pub enum MyEnum {
 ///     Unit,
-///     Tuple(u32, String),
+///     Tuple(u32, f64),
 ///     Struct { id: u32, name: String },
 /// }
 /// 
 /// assert_eq!(MyEnum::unit(), MyEnum::Unit);
-/// assert_eq!(MyEnum::tuple(42, "Answer".to_string()), MyEnum::Tuple(42, "Answer".to_string()));
+/// assert_eq!(MyEnum::tuple(42, 1.0), MyEnum::Tuple(42, 1.0));
 /// assert_eq!(MyEnum::struct_(1, "Test".to_string()), MyEnum::Struct { id: 1, name: "Test".to_string() });
 /// ```
 #[proc_macro_derive(VariantConstructors, attributes(variants))]
