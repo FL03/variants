@@ -440,7 +440,7 @@ checksum = "5a5f39404a5da50712a4c1eecf25e90dd62b613502b7e925fd4e4d19b5c96512"
 
 [[package]]
 name = "variants"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "criterion",
@@ -451,7 +451,7 @@ dependencies = [
 
 [[package]]
 name = "variants-derive"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -460,7 +460,7 @@ dependencies = [
 
 [[package]]
 name = "variants-macros"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "proc-macro2",
  "quote",

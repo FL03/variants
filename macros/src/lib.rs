@@ -14,9 +14,3 @@
 
 #[cfg(feature = "alloc")]
 extern crate alloc;
-
-#[cfg(not(any(feature = "std", feature = "alloc")))]
-compile_error! {
-    "Either feature `std` or `alloc` must be enabled"
-}
-

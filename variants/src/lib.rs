@@ -17,6 +17,12 @@
 
 #[cfg(feature = "alloc")]
 extern crate alloc;
+
+#[cfg(not(any(feature = "std", feature = "alloc")))]
+compile_error! {
+    "Either feature `std` or `alloc` must be enabled"
+}
+
 #[doc(inline)]
 pub use self::error::{Error, Result};
 
@@ -33,4 +39,7 @@ pub use variants_macros::*;
 pub mod prelude {
     #[cfg(feature = "derive")]
     pub use variants_derive::*;
+    #[allow(unused_imports)]
+    #[cfg(feature = "macros")]
+    pub use variants_macros::*;
 }
